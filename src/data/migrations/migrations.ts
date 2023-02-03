@@ -1,5 +1,5 @@
 import { BaseDatabase } from '../baseDatabase';
-import { TABLE_USERS, TABLE_POSTS, TABLE_FRIENDSHIPS, TABLE_COMMENTS, TABLE_LIKES } from './tableNames';
+import { TABLE_USERS, TABLE_POSTS, TABLE_FRIENDSHIPS, TABLE_COMMENTS, TABLE_LIKES } from '../tableNames';
 import users from './users.json'
 import posts from './posts.json'
 import friendships from './friendships.json'
