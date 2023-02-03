@@ -18,4 +18,16 @@ export class UserDatabase extends BaseDatabase implements UserReposytory {
             throw new CustomError(400, error.message);
         }
     }
+
+    public emailExists = async (email: string) => {
+        try {
+
+            return await UserDatabase.connection(this.TABLE_NAME).where('email', email)
+
+        } catch (error: any) {
+            throw new CustomError(400, error.message);
+        }
+    }
+
 }
+

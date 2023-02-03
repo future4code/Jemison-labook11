@@ -3,10 +3,11 @@ import { UserDatabase } from './../data/userDatabase';
 import { UserBusiness } from './../business/userBusiness';
 import express from 'express'
 
+
 export const userRouter = express.Router()
 
-const userDatabase = new UserDatabase
+const userDatabase = new UserDatabase()
 const userBusiness = new UserBusiness(userDatabase)
 const userController = new UserController(userBusiness)
 
-userRouter.post('/create',(req, res)=> userController.creatUser)
+userRouter.post('/create', userController.creatUser)

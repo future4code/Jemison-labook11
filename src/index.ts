@@ -1,4 +1,16 @@
-// import {app} from './app'
+import { loginRouter } from './routes/loginRouter';
+ import {app} from './controller/app'
+ import {userRouter} from './routes/userRouter'
+
+ app.use('/user/', userRouter)
+
+ app.use('/', loginRouter)
+
+
+
+
+
+
 // import { Request, Response } from 'express'
 
 // /**************************** TYPES ******************************/

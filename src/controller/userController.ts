@@ -1,5 +1,4 @@
-import { CustomError } from './../error/customError';
-import { UserControllerInputDTO, CreationUserReturnDTO } from './../model/userDTOs';
+import { UserControllerInputDTO} from './../model/userDTOs';
 import { UserBusiness } from './../business/userBusiness';
 import { Request, Response } from 'express';
 
@@ -10,16 +9,35 @@ export class UserController {
     try {
 
       const { name, email, password } = req.body
+
       const input: UserControllerInputDTO = {
         name,
         email,
         password
       }
+
       const result = await this.userBusiness.createUser(input)
       res.status(201).send(result)
 
     } catch (error: any) {
-      throw new CustomError(400, error.message);
+      res.status(400).send(error.message);
     }
-  }
+  };   
 }
+
+
+// public getUserProfile = async(req:Request, res: Response) =>{
+//   try {
+
+//  const input:AuthenticationTokenDTO ={
+//   token: req.headers.authorization as string
+//  }
+//  const userBusiness = new UserBusiness
+
+//  const result = await userBusiness.getUserProfile(input.token)
+ 
+//     res.status(201).send(result);
+//   } catch (error: any) {
+//     res.status(400).send(error.message);
+//   }
+// }
