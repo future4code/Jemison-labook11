@@ -1,8 +1,8 @@
-import { TypeEnum } from './../model/postClass';
-import { AuthenticationTokenDTO } from './../model/authenticationsTypes';
+import { PostGetByIdInputDTO, PostGetByTypeInputDTO } from '../model/DTO/postDTOs';
+import { AuthenticationTokenDTO } from '../model/type/authenticationsTypes';
 import { PostBusiness } from "../business/postBusiness";
 import { Request, Response } from 'express';
-import { PostInputDTO } from '../model/postDTOs';
+import { PostInputDTO } from '../model/DTO/postDTOs';
 
 export class PostController {
     constructor(private postBusiness: PostBusiness) { }
@@ -16,7 +16,7 @@ export class PostController {
             const input: PostInputDTO = {
                 photo,
                 description,
-                type           
+                type
             }
             const result = await this.postBusiness.createPost(input, token.token)
             res.status(201).send(result)
@@ -31,9 +31,12 @@ export class PostController {
 
             const token: AuthenticationTokenDTO = { token: req.headers.auth as string }
 
-            const postId:string  = req.body.postId
-       
-            const result = await this.postBusiness.getPostById (postId, token.token)
+            const { postId } = req.body
+            const input: PostGetByIdInputDTO = {
+                postId
+            }
+
+            const result = await this.postBusiness.getPostById(input, token.token)
             res.status(201).send(result)
 
         } catch (error: any) {
@@ -46,8 +49,11 @@ export class PostController {
 
             const token: AuthenticationTokenDTO = { token: req.headers.auth as string }
 
-            const type:TypeEnum  = req.body.type
-       
+            const { type } = req.body
+            const input: PostGetByTypeInputDTO = {
+                type
+            }
+
             const result = await this.postBusiness.getPostByType(type, token.token)
             res.status(201).send(result)
 

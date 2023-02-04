@@ -1,4 +1,4 @@
-import { LoginInputDTO } from './../model/loginDTO';
+import { LoginInputDTO } from '../model/DTO/loginDTO';
 import { Request, Response } from 'express';
 import { LoginBusiness } from '../business/loginBusiness';
 

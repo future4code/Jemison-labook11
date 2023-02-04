@@ -1,4 +1,4 @@
-import { FriendshipClass } from './friendshipClass';
+import { FriendshipClass } from '../class/friendshipClass';
 
 export interface FriendshipInput{
     userReciever:string

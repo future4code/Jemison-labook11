@@ -1,3 +1,4 @@
+import { likeRouter } from './routes/likeRouter';
 import { app } from './controller/app'
 import { postRouter } from './routes/postRouter';
 import { loginRouter } from './routes/loginRouter';
@@ -11,3 +12,5 @@ app.use('/user/', userRouter)
 app.use('/post', postRouter)
 
 app.use('/friendship', friendshipRouter)
+
+app.use('/like',likeRouter)

@@ -1,9 +1,17 @@
-import { TypeEnum, PostClass } from './postClass';
+import { TypeEnum, PostClass } from '../class/postClass';
 
 export interface PostInputDTO{
     photo:string,
     description:string,
     type?:TypeEnum,
+ }
+
+ export interface PostGetByIdInputDTO{
+    postId:string
+ }
+
+ export interface PostGetByTypeInputDTO{
+    type:TypeEnum
  }
 
  export interface PostIdInputDTO{

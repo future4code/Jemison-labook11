@@ -1,9 +1,9 @@
-import { UserReturnDTO } from './../model/userDTOs';
+import { UserReturnDTO } from '../model/DTO/userDTOs';
 import { CustomError } from './../error/customError';
-import { UserClass } from '../model/userClass';
+import { UserClass } from '../model/class/userClass';
 import { TABLE_USERS } from './tableNames';
 import { BaseDatabase } from "./baseDatabase";
-import { UserRepository } from '../business/userRepository';
+import { UserRepository } from '../business/repository/userRepository';
 
 
 export class UserDatabase extends BaseDatabase implements UserRepository {
@@ -20,7 +20,7 @@ export class UserDatabase extends BaseDatabase implements UserRepository {
         }
     }
 
-    public emailExists = async (email: string):Promise<UserReturnDTO> => {
+    public emailExists = async (email: string):Promise<UserReturnDTO[]> => {
         try {
 
            const result = await UserDatabase.connection(this.TABLE_NAME).where('email', email)
@@ -31,7 +31,7 @@ export class UserDatabase extends BaseDatabase implements UserRepository {
         }
     }
 
-    public userExists =async (userId:string):Promise<UserReturnDTO> => {
+    public userExists =async (userId:string):Promise<UserReturnDTO[]> => {
         try {
 
             const result = await UserDatabase.connection(this.TABLE_NAME).where('id', userId)

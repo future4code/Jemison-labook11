@@ -1,13 +1,13 @@
 import { InvalidPostId } from './../error/postCustomError';
-import { ReturnPostGetBy } from './../model/postDTOs';
+import { ReturnPostGetBy, PostGetByIdInputDTO, PostGetByTypeInputDTO } from '../model/DTO/postDTOs';
 import { IdGenerator } from './../services/idGenerator';
-import { PostClass } from './../model/postClass';
+import { PostClass } from '../model/class/postClass';
 import { Authenticator } from './../services/authenticator';
-import { CreationPostReturnDTO, PostInputDTO } from '../model/postDTOs';
-import { PostRepository } from './postRepository';
+import { CreationPostReturnDTO, PostInputDTO } from '../model/DTO/postDTOs';
+import { PostRepository } from './repository/postRepository';
 import { CustomError } from '../error/customError';
-import * as err from '../error/postCustomError'
-import { TypeEnum } from '../model/postClass';
+import * as err from '../error/postCustomError';
+import { TypeEnum } from '../model/class/postClass';
 
 export class PostBusiness {
 
@@ -19,7 +19,7 @@ export class PostBusiness {
 
             const authenticator = new Authenticator()
             const { id } = authenticator.getTokenData(token)
-            
+
             let typeChoosed
 
             if (!input.photo) {
@@ -54,54 +54,54 @@ export class PostBusiness {
 
             return { message: 'Post Criado com sucesso', post: newPost }
 
-        } catch(error: any) {
-        throw new CustomError(400, error.message);
+        } catch (error: any) {
+            throw new CustomError(400, error.message);
+        }
     }
-}
 
 
-    public getPostById = async (postId: string, token: string): Promise<ReturnPostGetBy> => {
+    public getPostById = async (input: PostGetByIdInputDTO, token: string): Promise<ReturnPostGetBy[]> => {
 
-    try {
-        const authenticator = new Authenticator()
-        const { id } = authenticator.getTokenData(token)
+        try {
+            const authenticator = new Authenticator()
+            const { id } = authenticator.getTokenData(token)
 
-        if (!postId) {
-            throw new err.MissingPostId()
+            if (!input.postId) {
+                throw new err.MissingPostId()
+            }
+            const result = await this.postDatabase.getPostById({ postId: input.postId })
+
+            if (result.length === 0) {
+                throw new InvalidPostId()
+            } else {
+                return result
+            }
+
+        } catch (error: any) {
+            throw new CustomError(400, error.message);
         }
-        const result = await this.postDatabase.getPostById(postId)
-
-        if (!result) {
-            throw new InvalidPostId()
-        } else {
-            return result
-        }
-
-    } catch (error: any) {
-        throw new CustomError(400, error.message);
     }
-}
 
-public getPostByType = async (type:TypeEnum, token:string):Promise<ReturnPostGetBy[]> =>{
-    
-    try{
-        const authenticator = new Authenticator()
-        const { id } = authenticator.getTokenData(token)
+    public getPostByType = async (input: PostGetByTypeInputDTO, token: string): Promise<ReturnPostGetBy[]> => {
 
-        if(!type){
-            throw new err.MissingType()
+        try {
+            const authenticator = new Authenticator()
+            const { id } = authenticator.getTokenData(token)
+
+            if (!input.type) {
+                throw new err.MissingType()
+            }
+
+            if (input.type !== TypeEnum.EVENT.toString() && input.type !== TypeEnum.NORMAL.toString()) {
+                throw new err.InvalidGetByType()
+            }
+
+            return await this.postDatabase.getPostByType({ type: input.type })
+
+        } catch (error: any) {
+            throw new CustomError(400, error.message);
         }
-
-        if(type !== TypeEnum.EVENT.toString() && type !== TypeEnum.NORMAL.toString()){
-            throw new err.InvalidGetByType()
-        }
-
-        return await this.postDatabase.getPostByType(type)
-
-    }catch (error: any) {
-        throw new CustomError(400, error.message);
     }
-}
 
 }
 

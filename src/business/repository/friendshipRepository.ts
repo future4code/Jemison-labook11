@@ -1,5 +1,5 @@
-import { FriendshipClass } from './../model/friendshipClass';
-import { FriendshipDTO } from '../model/friendshipDTO';
+import { FriendshipClass } from '../../model/class/friendshipClass';
+import { FriendshipDTO } from '../../model/DTO/friendshipDTO';
 
 
 export interface friendshipRepository{
