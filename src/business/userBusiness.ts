@@ -6,14 +6,14 @@ import { ValidatePassword } from './../services/validatePassword';
 import { ValidateEmail } from './../services/validateEmail';
 import { CustomError } from '../error/customError';
 import { UserControllerInputDTO, CreationUserReturnDTO } from '../model/userDTOs';
-import { UserReposytory } from './userRepository';
+import { UserRepository } from './userRepository';
 import * as err from '../error/userCustomError'
 
 
 
 export class UserBusiness {
 
-    constructor(private userDatabase: UserReposytory) { }
+    constructor(private userDatabase: UserRepository) { }
 
 
     public createUser = async (input: UserControllerInputDTO): Promise<CreationUserReturnDTO> => {

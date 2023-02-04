@@ -2,10 +2,10 @@ import { CustomError } from './../error/customError';
 import { UserClass } from '../model/userClass';
 import { TABLE_USERS } from './tableNames';
 import { BaseDatabase } from "./baseDatabase";
-import { UserReposytory } from '../business/userRepository';
+import { UserRepository } from '../business/userRepository';
 
 
-export class UserDatabase extends BaseDatabase implements UserReposytory {
+export class UserDatabase extends BaseDatabase implements UserRepository {
 
     TABLE_NAME = TABLE_USERS
 
