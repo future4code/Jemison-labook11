@@ -2,12 +2,12 @@ import { UserClass } from './../model/userClass';
 import { Authenticator } from '../services/authenticator';
 import { HashManager } from './../services/hashManager';
 import { LoginInputDTO } from './../model/loginDTO';
-import { UserReposytory } from './userRepository';
+import { UserRepository } from './userRepository';
 import * as err from '../error/loginError';
 import { CustomError } from '../error/customError';
 
 export class LoginBusiness {
-    constructor(private UserDatabase: UserReposytory) { }
+    constructor(private UserDatabase: UserRepository) { }
 
 
     public login = async (input: LoginInputDTO) => {
