@@ -4,6 +4,7 @@ import { UserClass } from "../model/userClass";
 export interface UserRepository{
 
     insertUser(user: UserClass):Promise<void>
-    emailExists(email: string):Promise<UserReturnDTO[]>
+    emailExists(email: string):Promise<UserReturnDTO>
+    userExists(userId:string):Promise<UserReturnDTO>
 
 }

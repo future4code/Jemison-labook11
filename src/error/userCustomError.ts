@@ -26,7 +26,7 @@ export class InvalidEmail extends CustomError {
 
 export class InvalidPassword extends CustomError {
     constructor() {
-        super(409, "Senha Inválida, a senha deve possuir no mínimo 8 caracteres entre números, letras maíusculas e minúsculas.")
+        super(409, "Senha Inválida, a senha deve possuir no mínimo 8 caracteres contendo ao menos um números, uma letra maíuscula, uma letra minúsculas e um caracter especial(!@#$%&).")
     }
 }
 

@@ -10,3 +10,5 @@ const postBusiness = new PostBusiness(postDatabase)
 const postController = new PostController(postBusiness)
 
 postRouter.post('/create', postController.creatPost)
+postRouter.get('/byId', postController.getPostById)
+postRouter.get('/byType',postController.getPostByType)

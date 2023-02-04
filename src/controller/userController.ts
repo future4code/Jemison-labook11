@@ -26,18 +26,3 @@ export class UserController {
 }
 
 
-// public getUserProfile = async(req:Request, res: Response) =>{
-//   try {
-
-//  const input:AuthenticationTokenDTO ={
-//   token: req.headers.authorization as string
-//  }
-//  const userBusiness = new UserBusiness
-
-//  const result = await userBusiness.getUserProfile(input.token)
- 
-//     res.status(201).send(result);
-//   } catch (error: any) {
-//     res.status(400).send(error.message);
-//   }
-// }
