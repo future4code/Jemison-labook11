@@ -41,7 +41,7 @@ export class UserBusiness {
 
             const emailExists = await this.userDatabase.emailExists(input.email)
                  
-            if (emailExists.length > 0) {
+            if (emailExists) {
                 throw new err.EmailAlreadyExists()
             }else{
             const idGenerator = new IdGenerator()

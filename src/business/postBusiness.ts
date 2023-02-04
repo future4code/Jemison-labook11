@@ -1,3 +1,5 @@
+import { InvalidPostId } from './../error/postCustomError';
+import { ReturnPostGetBy } from './../model/postDTOs';
 import { IdGenerator } from './../services/idGenerator';
 import { PostClass } from './../model/postClass';
 import { Authenticator } from './../services/authenticator';
@@ -17,7 +19,9 @@ export class PostBusiness {
 
             const authenticator = new Authenticator()
             const { id } = authenticator.getTokenData(token)
-         
+            
+            let typeChoosed
+
             if (!input.photo) {
                 throw new err.MissingPhoto()
             }
@@ -28,45 +32,76 @@ export class PostBusiness {
             if (input.type && input.type !== TypeEnum.EVENT) {
                 throw new err.InvalidType()
             }
-
             if (!input.type) {
-
-                const idGenerator = new IdGenerator()
-                const postId: string = idGenerator.generateId()
-
-                const newPost = new PostClass(
-                    postId,
-                    input.photo,
-                    input.description,
-                    TypeEnum.NORMAL,
-                    id
-                )
-
-                await this.postDatabase.insertPost(newPost)
-
-                return { message: 'Post Criado com sucesso', post: newPost }
+                typeChoosed = TypeEnum.NORMAL
 
             } else {
-                const idGenerator = new IdGenerator()
-                const postId: string = idGenerator.generateId()
-
-                const newPost = new PostClass(
-                    postId,
-                    input.photo,
-                    input.description,
-                    TypeEnum.EVENT,
-                    id
-                )
-
-                await this.postDatabase.insertPost(newPost)
-
-                return { message: 'Post Criado com sucesso', post: newPost }
-
+                typeChoosed = TypeEnum.EVENT
             }
 
-        } catch (error: any) {
-            throw new CustomError(400, error.message);
-        }
+            const idGenerator = new IdGenerator()
+            const postId: string = idGenerator.generateId()
+
+            const newPost = new PostClass(
+                postId,
+                input.photo,
+                input.description,
+                typeChoosed,
+                id
+            )
+
+            await this.postDatabase.insertPost(newPost)
+
+            return { message: 'Post Criado com sucesso', post: newPost }
+
+        } catch(error: any) {
+        throw new CustomError(400, error.message);
     }
+}
+
+
+    public getPostById = async (postId: string, token: string): Promise<ReturnPostGetBy> => {
+
+    try {
+        const authenticator = new Authenticator()
+        const { id } = authenticator.getTokenData(token)
+
+        if (!postId) {
+            throw new err.MissingPostId()
+        }
+        const result = await this.postDatabase.getPostById(postId)
+
+        if (!result) {
+            throw new InvalidPostId()
+        } else {
+            return result
+        }
+
+    } catch (error: any) {
+        throw new CustomError(400, error.message);
+    }
+}
+
+public getPostByType = async (type:TypeEnum, token:string):Promise<ReturnPostGetBy[]> =>{
+    
+    try{
+        const authenticator = new Authenticator()
+        const { id } = authenticator.getTokenData(token)
+
+        if(!type){
+            throw new err.MissingType()
+        }
+
+        if(type !== TypeEnum.EVENT.toString() && type !== TypeEnum.NORMAL.toString()){
+            throw new err.InvalidGetByType()
+        }
+
+        return await this.postDatabase.getPostByType(type)
+
+    }catch (error: any) {
+        throw new CustomError(400, error.message);
+    }
+}
+
 }
 
