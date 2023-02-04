@@ -1,6 +1,6 @@
-import { FriendshipDTO } from './../model/friendshipDTO';
-import { FriendshipClass } from './../model/friendshipClass';
-import { friendshipRepository } from './../business/friendshipRepository';
+import { FriendshipDTO } from '../model/DTO/friendshipDTO';
+import { FriendshipClass } from '../model/class/friendshipClass';
+import { friendshipRepository } from '../business/repository/friendshipRepository';
 import { TABLE_FRIENDSHIPS } from './tableNames';
 import { BaseDatabase } from './baseDatabase';
 import { CustomError } from '../error/customError';

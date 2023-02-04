@@ -1,4 +1,4 @@
-import { UserControllerInputDTO} from './../model/userDTOs';
+import { UserControllerInputDTO} from '../model/DTO/userDTOs';
 import { UserBusiness } from './../business/userBusiness';
 import { Request, Response } from 'express';
 

@@ -1,13 +1,13 @@
 import { Authenticator } from './../services/authenticator';
-import { UserClass } from './../model/userClass';
+import { UserClass } from '../model/class/userClass';
 import { HashManager } from './../services/hashManager';
 import { IdGenerator } from './../services/idGenerator';
 import { ValidatePassword } from './../services/validatePassword';
 import { ValidateEmail } from './../services/validateEmail';
 import { CustomError } from '../error/customError';
-import { UserControllerInputDTO, CreationUserReturnDTO } from '../model/userDTOs';
-import { UserRepository } from './userRepository';
-import * as err from '../error/userCustomError'
+import { UserControllerInputDTO, CreationUserReturnDTO } from '../model/DTO/userDTOs';
+import { UserRepository } from './repository/userRepository';
+import * as err from '../error/userCustomError';
 
 
 
@@ -41,7 +41,7 @@ export class UserBusiness {
 
             const emailExists = await this.userDatabase.emailExists(input.email)
                  
-            if (emailExists) {
+            if (emailExists.length > 0) {
                 throw new err.EmailAlreadyExists()
             }else{
             const idGenerator = new IdGenerator()

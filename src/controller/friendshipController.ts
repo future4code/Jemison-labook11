@@ -1,6 +1,6 @@
-import { FriendshipInput } from './../model/friendshipDTO';
-import { AuthenticationTokenDTO } from './../model/authenticationsTypes';
-import{FriendshipBusiness} from '../business/frienshipBusiness'
+import { FriendshipInput } from '../model/DTO/friendshipDTO';
+import { AuthenticationTokenDTO } from '../model/type/authenticationsTypes';
+import{FriendshipBusiness} from '../business/frienshipBusiness';
 import { Request, Response } from 'express';
 
 export class FriendshipController {

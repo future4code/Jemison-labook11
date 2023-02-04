@@ -1,10 +1,10 @@
-import { UserRepository } from './userRepository';
-import { FriendshipClass } from './../model/friendshipClass';
-import { FriendshipInput, CreationFriendshipReturnDTO } from './../model/friendshipDTO';
-import { friendshipRepository } from './friendshipRepository';
+import { UserRepository } from './repository/userRepository';
+import { FriendshipClass } from '../model/class/friendshipClass';
+import { FriendshipInput, CreationFriendshipReturnDTO } from '../model/DTO/friendshipDTO';
+import { friendshipRepository } from './repository/friendshipRepository';
 import { CustomError } from '../error/customError';
 import { Authenticator } from '../services/authenticator';
-import * as err from '../error/friendshipError'
+import * as err from '../error/friendshipError';
 
 export class FriendshipBusiness {
     constructor(

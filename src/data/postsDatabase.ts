@@ -1,6 +1,6 @@
-import { ReturnPostGetBy } from './../model/postDTOs';
-import { PostRepository } from './../business/postRepository';
-import { PostClass, TypeEnum } from './../model/postClass';
+import { ReturnPostGetBy, PostGetByIdInputDTO, PostGetByTypeInputDTO } from '../model/DTO/postDTOs';
+import { PostRepository } from '../business/repository/postRepository';
+import { PostClass, TypeEnum } from '../model/class/postClass';
 import { CustomError } from './../error/customError';
 import { TABLE_POSTS, TABLE_USERS } from './tableNames';
 import { BaseDatabase } from "./baseDatabase";
@@ -22,13 +22,13 @@ export class PostDatabase extends BaseDatabase implements PostRepository {
         }
     }
 
-    public getPostById = async (postId: string): Promise<ReturnPostGetBy> => {
+    public getPostById = async (input:PostGetByIdInputDTO): Promise<ReturnPostGetBy[]> => {
         try {
             const result = await PostDatabase.connection.raw(`
                 SELECT p.id AS "Id do Post", p.photo AS "URL da imagem", p.description AS "Descrição", p.type AS "tipo de postagem", DATE_FORMAT(STR_TO_DATE(p.created_at, '%Y-%m-%d %H:%i:%s'), '%d/%m/%Y %H:%i:%s') AS "postado em", p.author_id_fk AS "ID Autor", a.name AS "Nome Autor", a.email AS "Email Autor"
                 FROM ${this.TABLE_NAME} p
                 INNER JOIN ${TABLE_USERS} a ON a.id = p.author_id_fk
-                WHERE p.id = "${postId}"
+                WHERE p.id = "${input.postId}"
             `)
 
             return result[0]
@@ -38,13 +38,13 @@ export class PostDatabase extends BaseDatabase implements PostRepository {
         }
     }
 
-    public getPostByType = async (type:TypeEnum): Promise<ReturnPostGetBy[]> => {
+    public getPostByType = async (input:PostGetByTypeInputDTO): Promise<ReturnPostGetBy[]> => {
         try {
             const result = await PostDatabase.connection.raw(`
                 SELECT p.id AS "Id do Post", p.photo AS "URL da imagem", p.description AS "Descrição", p.type AS "tipo de postagem", DATE_FORMAT(STR_TO_DATE(p.created_at, '%Y-%m-%d %H:%i:%s'), '%d/%m/%Y %H:%i:%s') AS "postado em", p.author_id_fk AS "ID Autor", a.name AS "Nome Autor", a.email AS "Email Autor"
                 FROM ${this.TABLE_NAME} p
                 INNER JOIN ${TABLE_USERS} a ON a.id = p.author_id_fk
-                WHERE p.type = "${type}"
+                WHERE p.type = "${input.type}"
                 ORDER BY created_at
             `)
 

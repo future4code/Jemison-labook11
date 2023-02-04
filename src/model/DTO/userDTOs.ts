@@ -1,4 +1,4 @@
-import { UserClass } from "./userClass"
+import { UserClass } from "../class/userClass"
 
 export interface UserReturnDTO{
     id:string,
