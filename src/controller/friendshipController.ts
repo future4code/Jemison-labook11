@@ -1,6 +1,6 @@
 import { FriendshipInput } from '../model/DTO/friendshipDTO';
 import { AuthenticationTokenDTO } from '../model/type/authenticationsTypes';
-import{FriendshipBusiness} from '../business/frienshipBusiness';
+import { FriendshipBusiness } from '../business/frienshipBusiness';
 import { Request, Response } from 'express';
 
 export class FriendshipController {
@@ -15,7 +15,7 @@ export class FriendshipController {
             const input: FriendshipInput = {
                 userReciever
             }
-            const result = await this.friendshipBusiness.createFriendship(input,token.token)
+            const result = await this.friendshipBusiness.createFriendship(input, token.token)
             res.status(201).send(result)
 
         } catch (error: any) {
@@ -32,7 +32,7 @@ export class FriendshipController {
             const input: FriendshipInput = {
                 userReciever
             }
-            const result = await this.friendshipBusiness.deleteFriendship(input,token.token)
+            const result = await this.friendshipBusiness.deleteFriendship(input, token.token)
             res.status(201).send(result)
 
         } catch (error: any) {

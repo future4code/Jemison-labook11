@@ -1,5 +1,7 @@
+import { CreatArrayForFeed } from './../services/CreateArrayForFeed';
+import { FriendshipDatabase } from './../data/friendshipDatabase';
 import { InvalidPostId } from './../error/postCustomError';
-import { ReturnPostGetBy, PostGetByIdInputDTO, PostGetByTypeInputDTO } from '../model/DTO/postDTOs';
+import { ReturnPostGetByDTO, PostGetByIdInputDTO, PostGetByTypeInputDTO, FeedLimitInputDTO } from '../model/DTO/postDTOs';
 import { IdGenerator } from './../services/idGenerator';
 import { PostClass } from '../model/class/postClass';
 import { Authenticator } from './../services/authenticator';
@@ -8,6 +10,7 @@ import { PostRepository } from './repository/postRepository';
 import { CustomError } from '../error/customError';
 import * as err from '../error/postCustomError';
 import { TypeEnum } from '../model/class/postClass';
+
 
 export class PostBusiness {
 
@@ -60,7 +63,7 @@ export class PostBusiness {
     }
 
 
-    public getPostById = async (input: PostGetByIdInputDTO, token: string): Promise<ReturnPostGetBy[]> => {
+    public getPostById = async (input: PostGetByIdInputDTO, token: string): Promise<ReturnPostGetByDTO[]> => {
 
         try {
             const authenticator = new Authenticator()
@@ -82,7 +85,7 @@ export class PostBusiness {
         }
     }
 
-    public getPostByType = async (input: PostGetByTypeInputDTO, token: string): Promise<ReturnPostGetBy[]> => {
+    public getPostByType = async (input: PostGetByTypeInputDTO, token: string): Promise<ReturnPostGetByDTO[]> => {
 
         try {
             const authenticator = new Authenticator()
@@ -103,5 +106,40 @@ export class PostBusiness {
         }
     }
 
+
+    public feed = async (limitN: number, token: string): Promise<ReturnPostGetByDTO[]> => {
+
+        try {
+
+            const authenticator = new Authenticator()
+            const { id } = authenticator.getTokenData(token)
+
+            let limitNumber
+
+            const test = /\d|,/g.test(limitN.toString())
+           
+            if (!limitN || Number(limitN) < 5 || !test ) {
+                limitNumber = 5
+            } else {
+                limitNumber = Number(limitN)
+            }
+            const friendshioDatabase = new FriendshipDatabase()
+
+            const array = await friendshioDatabase.getAllFriends({ userId: id })
+
+            const createArrayForFeed = new CreatArrayForFeed
+            const stringForQuery = createArrayForFeed.createArrayForFeed(array)
+
+            const result = await this.postDatabase.postFeed({ id: id, stringForQuery: stringForQuery, limit: limitNumber })
+
+            return result
+
+
+        } catch (error: any) {
+            throw new CustomError(400, error.message);
+        }
+    }
+
 }
+
 
