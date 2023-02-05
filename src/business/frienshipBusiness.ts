@@ -1,14 +1,14 @@
 import { UserRepository } from './repository/userRepository';
 import { FriendshipClass } from '../model/class/friendshipClass';
 import { FriendshipInput, CreationFriendshipReturnDTO } from '../model/DTO/friendshipDTO';
-import { friendshipRepository } from './repository/friendshipRepository';
+import { FriendshipRepository } from './repository/friendshipRepository';
 import { CustomError } from '../error/customError';
 import { Authenticator } from '../services/authenticator';
 import * as err from '../error/friendshipError';
 
 export class FriendshipBusiness {
     constructor(
-        private friendshipDatabase: friendshipRepository,
+        private friendshipDatabase: FriendshipRepository,
         private userDatabase: UserRepository
     ) { }
 
@@ -78,6 +78,8 @@ export class FriendshipBusiness {
             if (friendshipExists.length > 0) {
 
                 await this.friendshipDatabase.deleteFriendship({ senderId: id, recieverId: input.userReciever })
+
+
 
                 return 'Amizade deletada com sucesso.'
             }

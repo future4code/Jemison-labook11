@@ -1,12 +1,13 @@
+import { FriendsForFeedDTO, GetAllFriendsInput } from './../model/DTO/friendshipDTO';
 import { FriendshipDTO } from '../model/DTO/friendshipDTO';
 import { FriendshipClass } from '../model/class/friendshipClass';
-import { friendshipRepository } from '../business/repository/friendshipRepository';
+import { FriendshipRepository } from '../business/repository/friendshipRepository';
 import { TABLE_FRIENDSHIPS } from './tableNames';
 import { BaseDatabase } from './baseDatabase';
 import { CustomError } from '../error/customError';
 
 
-export class FriendshipDatabase extends BaseDatabase implements friendshipRepository {
+export class FriendshipDatabase extends BaseDatabase implements FriendshipRepository {
 
     TABLE_NAME = TABLE_FRIENDSHIPS
 
@@ -33,7 +34,7 @@ export class FriendshipDatabase extends BaseDatabase implements friendshipReposi
         } catch (error: any) {
             throw new CustomError(400, error.message);
         }
-    }
+    };
 
     public deleteFriendship = async (input: FriendshipDTO): Promise<void> => {
         try {
@@ -46,18 +47,21 @@ export class FriendshipDatabase extends BaseDatabase implements friendshipReposi
         } catch (error: any) {
             throw new CustomError(400, error.message);
         }
-    }
+    };
 
-
-    public getAllFriends = async () => {
+    public getAllFriends = async (input: GetAllFriendsInput):Promise<FriendsForFeedDTO[]> => {
         try {
             const result = await FriendshipDatabase.connection.raw(`
-        SELECT user_sender_fk AS "Amigos" from Labook_users_friendships WHERE user_reciever_fk = "81199684-e6e0-48a3-9bac-ff29256904e2"
-        UNION SELECT user_reciever_fk from Labook_users_friendships WHERE user_sender_fk = "81199684-e6e0-48a3-9bac-ff29256904e2";
-        `)
+                SELECT user_sender_fk AS "amigo" from ${this.TABLE_NAME}
+                WHERE user_reciever_fk = "${input.userId}"
+                UNION SELECT user_reciever_fk from ${this.TABLE_NAME}
+                WHERE user_sender_fk = "${input.userId}";
+            `)
+            
+            return result[0]
 
         } catch (error: any) {
             throw new CustomError(400, error.message);
         }
-    }
+    };
 }

@@ -14,3 +14,10 @@ export interface FriendshipDTO{
     recieverId:string
 }
 
+export interface GetAllFriendsInput{
+    userId:string
+}
+
+export interface FriendsForFeedDTO{
+    amigo:string
+}

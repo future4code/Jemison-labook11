@@ -23,7 +23,7 @@ export interface CreationPostReturnDTO{
     post:PostClass
 }
 
-export interface ReturnPostGetBy{
+export interface ReturnPostGetByDTO{
 'Id do Post':string,
 'URL da imagem':string,
 'Descrição':string,
@@ -31,4 +31,14 @@ export interface ReturnPostGetBy{
 'postado em':string,
 'Nome Autor': string,
 'Email Autor':string
+}
+
+export interface FeedLimitInputDTO{
+   limit:number
+}
+
+export interface FeedInputDTO{
+   id:string,
+   stringForQuery:string
+   limit:number
 }

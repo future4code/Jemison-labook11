@@ -18,7 +18,7 @@ export class UserDatabase extends BaseDatabase implements UserRepository {
         } catch (error: any) {
             throw new CustomError(400, error.message);
         }
-    }
+    };
 
     public emailExists = async (email: string):Promise<UserReturnDTO[]> => {
         try {
@@ -29,7 +29,7 @@ export class UserDatabase extends BaseDatabase implements UserRepository {
         } catch (error: any) {
             throw new CustomError(400, error.message);
         }
-    }
+    };
 
     public userExists =async (userId:string):Promise<UserReturnDTO[]> => {
         try {
@@ -40,7 +40,7 @@ export class UserDatabase extends BaseDatabase implements UserRepository {
         } catch (error: any) {
             throw new CustomError(400, error.message);
         }
-    }
+    };
 
 }
 
