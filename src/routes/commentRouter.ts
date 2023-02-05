@@ -6,9 +6,9 @@ import express from 'express';
 
 export const commentRouter = express.Router()
 
-const postDatabase = new PostDatabase() 
+const postDatabase = new PostDatabase()
 const commentDatabase = new CommentDatabase()
-const commentBusiness = new CommentBusiness(commentDatabase,postDatabase)
+const commentBusiness = new CommentBusiness(commentDatabase, postDatabase)
 const commentController = new CommentController(commentBusiness)
 
 commentRouter.post('/create', commentController.createComment)

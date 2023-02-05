@@ -30,7 +30,7 @@ export class InvalidPassword extends CustomError {
     }
 }
 
-export class EmailAlreadyExists extends CustomError{
+export class EmailAlreadyExists extends CustomError {
     constructor() {
         super(409, "Email já existente no banco de dados")
     }

@@ -11,5 +11,5 @@ const postController = new PostController(postBusiness)
 
 postRouter.post('/create', postController.creatPost)
 postRouter.get('/byId', postController.getPostById)
-postRouter.get('/byType',postController.getPostByType)
-postRouter.get('/feed',postController.feed)
+postRouter.get('/byType', postController.getPostByType)
+postRouter.get('/feed', postController.feed)

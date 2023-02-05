@@ -6,11 +6,11 @@ import express from 'express';
 
 export const likeRouter = express.Router()
 
-const postDatabase = new PostDatabase() 
+const postDatabase = new PostDatabase()
 const likeDatabase = new LikeDatabase()
-const likeBusiness = new LikeBusiness(likeDatabase,postDatabase)
+const likeBusiness = new LikeBusiness(likeDatabase, postDatabase)
 const likeController = new LikeController(likeBusiness)
 
 likeRouter.post('/create', likeController.creatLike)
-likeRouter.delete('/delete',likeController.deleteLike)
+likeRouter.delete('/delete', likeController.deleteLike)
 

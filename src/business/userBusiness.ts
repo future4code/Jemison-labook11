@@ -19,6 +19,7 @@ export class UserBusiness {
     public createUser = async (input: UserControllerInputDTO): Promise<CreationUserReturnDTO> => {
 
         try {
+
             if (!input.name) {
                 throw new err.MissingName()
             }
@@ -30,6 +31,7 @@ export class UserBusiness {
             }
 
             const isEmailValid = ValidateEmail(input.email)
+
             if (!isEmailValid) {
                 throw new err.InvalidEmail()
             }
@@ -40,29 +42,29 @@ export class UserBusiness {
             }
 
             const emailExists = await this.userDatabase.emailExists(input.email)
-                 
-            if (emailExists.length > 0) {
+
+            if (emailExists !== undefined) {
                 throw new err.EmailAlreadyExists()
-            }else{
-            const idGenerator = new IdGenerator()
-            const hashManager = new HashManager()
+            } else {
+                const idGenerator = new IdGenerator()
+                const hashManager = new HashManager()
 
-            const authenticator = new Authenticator()
+                const authenticator = new Authenticator()
 
-            const id: string = idGenerator.generateId()
-            const hashPassord: string = await hashManager.generateHash(input.password)
+                const id: string = idGenerator.generateId()
+                const hashPassord: string = await hashManager.generateHash(input.password)
 
-            const newUser = new UserClass(
-                id,
-                input.name,
-                input.email,
-                hashPassord
-            )
-            await this.userDatabase.insertUser(newUser)
+                const newUser = new UserClass(
+                    id,
+                    input.name,
+                    input.email,
+                    hashPassord
+                )
+                await this.userDatabase.insertUser(newUser)
 
-            const token = authenticator.generateToken({ id })
+                const token = authenticator.generateToken({ id })
 
-            return { message: 'Usuário criado com sucesso', user: newUser, token: token }
+                return { message: 'Usuário criado com sucesso', user: newUser, token: token }
             }
         } catch (error: any) {
             throw new CustomError(400, error.message);

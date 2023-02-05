@@ -14,27 +14,22 @@ export class LoginBusiness {
 
         try {
 
-            let token
-
             const emailExists = await this.UserDatabase.emailExists(input.email)
-   
+
             if (!emailExists) {
                 throw new err.WrongEmail()
             }
 
             const hashManager = new HashManager()
 
-            const comparePassword: boolean = await hashManager.compareHash(input.password,emailExists[0].password )
+            const comparePassword: boolean = await hashManager.compareHash(input.password, emailExists.password)
             if (!comparePassword) {
                 throw new err.WrongPassword()
             } else {
 
                 const authenticator = new Authenticator()
 
-                 return {token: authenticator.generateToken({ id: emailExists[0].id })}
-                 
-                 
-
+                return { token: authenticator.generateToken({ id: emailExists.id }) }
             }
 
         } catch (error: any) {

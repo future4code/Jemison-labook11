@@ -10,7 +10,7 @@ export class UserDatabase extends BaseDatabase implements UserRepository {
 
     TABLE_NAME = TABLE_USERS
 
-    public insertUser = async (user: UserClass):Promise<void> => {
+    public insertUser = async (user: UserClass): Promise<void> => {
         try {
 
             await super.CreateItem(user)
@@ -20,18 +20,18 @@ export class UserDatabase extends BaseDatabase implements UserRepository {
         }
     };
 
-    public emailExists = async (email: string):Promise<UserReturnDTO[]> => {
+    public emailExists = async (email: string): Promise<UserReturnDTO> => {
         try {
 
-           const result = await UserDatabase.connection(this.TABLE_NAME).where('email', email)
-           return result[0]
+            const result = await UserDatabase.connection(this.TABLE_NAME).where('email', email)
+            return result[0]
 
         } catch (error: any) {
             throw new CustomError(400, error.message);
         }
     };
 
-    public userExists =async (userId:string):Promise<UserReturnDTO[]> => {
+    public userExists = async (userId: string): Promise<UserReturnDTO[]> => {
         try {
 
             const result = await UserDatabase.connection(this.TABLE_NAME).where('id', userId)

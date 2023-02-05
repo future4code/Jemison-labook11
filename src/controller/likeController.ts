@@ -10,7 +10,7 @@ export class LikeController {
         try {
             const token: AuthenticationTokenDTO = { token: req.headers.auth as string }
 
-            const {postId } = req.body
+            const { postId } = req.body
             const input: LikeInputDTO = {
                 postId
             }
@@ -22,18 +22,18 @@ export class LikeController {
         }
     };
 
-    public deleteLike = async(req:Request, res:Response):Promise<void> =>{
-        try{
+    public deleteLike = async (req: Request, res: Response): Promise<void> => {
+        try {
             const token: AuthenticationTokenDTO = { token: req.headers.auth as string }
 
-            const {postId } = req.body
+            const { postId } = req.body
             const input: LikeInputDTO = {
                 postId
             }
             const result = await this.likeBusiness.deleteLike(input, token.token)
             res.status(201).send(result)
 
-        }catch (error: any) {
+        } catch (error: any) {
             res.status(400).send(error.message);
         }
     };

@@ -6,31 +6,31 @@ export class UserClass {
         private email: string,
         private password: string
     ) { }
-    public getId(){
+    public getId() {
         return this.id
     }
-    public setId(newId:string){
+    public setId(newId: string) {
         this.id = newId
     }
 
-    public getName(){
+    public getName() {
         return this.name
     }
-    public setName(newName:string){
+    public setName(newName: string) {
         this.name = newName
     }
 
-    public getEmail(){
+    public getEmail() {
         return this.email
     }
-    public setEmail(newEmail:string){
+    public setEmail(newEmail: string) {
         this.email = newEmail
     }
 
-    public getPassword(){
+    public getPassword() {
         return this.password
     }
-    public setPassword(newPassword:string){
+    public setPassword(newPassword: string) {
         this.password = newPassword
     }
 }

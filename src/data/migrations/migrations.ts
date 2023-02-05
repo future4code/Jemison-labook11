@@ -68,7 +68,7 @@ export abstract class MigrationDataBase extends BaseDatabase {
             })
             .catch((error: any) => console.log(error.sqlMessage || error.message))
       }
-      
+
       const insertData = async () => {
          try {
             await MigrationDataBase.connection(`${TABLE_USERS}`)
@@ -96,7 +96,7 @@ export abstract class MigrationDataBase extends BaseDatabase {
                .insert(comments)
                .then(() => console.log(`${TABLE_COMMENTS} populated!`))
                .catch((error: any) => printError(error))
-               
+
          } catch (error: any) {
             console.log(error.sqlMessage || error.message)
          } finally {

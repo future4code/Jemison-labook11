@@ -26,7 +26,7 @@ export class MissingAuthorId extends CustomError {
 
 export class InvalidType extends CustomError {
     constructor() {
-        super(422, 'O tipo do post precisa ser um "event" ou não ser preenchido.')
+        super(422, 'O tipo do post precisa ser um "event", "normal" ou não ser preenchido, neste caso ele será "normal".')
     }
 }
 
