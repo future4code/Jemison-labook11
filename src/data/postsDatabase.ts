@@ -26,7 +26,7 @@ export class PostDatabase extends BaseDatabase implements PostRepository {
     public getPostById = async (input: PostGetByIdInputDTO): Promise<ReturnPostGetByDTO[]> => {
         try {
             const result = await PostDatabase.connection.raw(`
-                SELECT p.id AS "Id do Post", p.photo AS "URL da imagem", p.description AS "Descrição", p.type AS "tipo de postagem", DATE_FORMAT(STR_TO_DATE(p.created_at, '%Y-%m-%d %H:%i:%s'), '%d/%m/%Y %H:%i:%s') AS "postado em", p.author_id_fk AS "ID Autor", a.name AS "Nome Autor", a.email AS "Email Autor"
+                SELECT p.id AS "ID do Post", p.photo AS "URL da imagem", p.description AS "Descrição", p.type AS "tipo de postagem", DATE_FORMAT(STR_TO_DATE(p.created_at, '%Y-%m-%d %H:%i:%s'), '%d/%m/%Y %H:%i:%s') AS "postado em", p.author_id_fk AS "ID Autor", a.name AS "Nome Autor", a.email AS "Email Autor"
                 FROM ${this.TABLE_NAME} p
                 INNER JOIN ${TABLE_USERS} a ON a.id = p.author_id_fk
                 WHERE p.id = "${input.postId}"
@@ -42,7 +42,7 @@ export class PostDatabase extends BaseDatabase implements PostRepository {
     public getPostByType = async (input: PostGetByTypeInputDTO): Promise<ReturnPostGetByDTO[]> => {
         try {
             const result = await PostDatabase.connection.raw(`
-                SELECT p.id AS "Id do Post", p.photo AS "URL da imagem", p.description AS "Descrição", p.type AS "tipo de postagem", DATE_FORMAT(STR_TO_DATE(p.created_at, '%Y-%m-%d %H:%i:%s'), '%d/%m/%Y %H:%i:%s') AS "postado em", p.author_id_fk AS "ID Autor", a.name AS "Nome Autor", a.email AS "Email Autor"
+                SELECT p.id AS "ID do Post", p.photo AS "URL da imagem", p.description AS "Descrição", p.type AS "tipo de postagem", DATE_FORMAT(STR_TO_DATE(p.created_at, '%Y-%m-%d %H:%i:%s'), '%d/%m/%Y %H:%i:%s') AS "postado em", p.author_id_fk AS "ID Autor", a.name AS "Nome Autor", a.email AS "Email Autor"
                 FROM ${this.TABLE_NAME} p
                 INNER JOIN ${TABLE_USERS} a ON a.id = p.author_id_fk
                 WHERE p.type = "${input.type}"
@@ -59,12 +59,14 @@ export class PostDatabase extends BaseDatabase implements PostRepository {
     public postFeed = async (input: FeedInputDTO): Promise<ReturnPostGetByDTO[]> => {
         try {
             const result = await PostDatabase.connection.raw(`
-            SELECT p.id AS "Id do Post", p.photo AS "URL da imagem", p.description AS "Descrição", p.type AS "tipo de postagem", DATE_FORMAT(STR_TO_DATE(p.created_at, '%Y-%m-%d %H:%i:%s'), '%d/%m/%Y %H:%i:%s') AS "postado em", p.author_id_fk AS "ID Autor", a.name AS "Nome Autor", a.email AS "Email Autor"
+            SELECT p.id AS "Id do Post", p.photo AS "URL da imagem", p.description AS "Descrição",
+            p.type AS "tipo de postagem", DATE_FORMAT(STR_TO_DATE(p.created_at, '%Y-%m-%d %H:%i:%s'), '%d/%m/%Y %H:%i:%s') AS "postado em",
+            p.author_id_fk AS "ID Autor", a.name AS "Nome Autor", a.email AS "Email Autor"
             FROM ${this.TABLE_NAME} p
             INNER JOIN ${TABLE_USERS} a ON a.id = p.author_id_fk
             WHERE ${input.stringForQuery}
             ORDER BY created_at
-            LIMIT ${input.limit}
+            LIMIT ${input.limit};
             `)
 
             return result[0]

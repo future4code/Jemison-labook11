@@ -12,3 +12,4 @@ const commentBusiness = new CommentBusiness(commentDatabase, postDatabase)
 const commentController = new CommentController(commentBusiness)
 
 commentRouter.post('/create', commentController.createComment)
+commentRouter.get('/byUser',commentController.getCommentByUser)

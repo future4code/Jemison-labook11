@@ -25,4 +25,17 @@ export class CommentController {
         }
     };
 
+    public getCommentByUser = async (req: Request, res: Response): Promise<void> => {
+        try {
+
+            const token: AuthenticationTokenDTO = { token: req.headers.auth as string }
+           
+            const result = await this.commentBusiness.getCommentsByUser(token.token)
+            res.status(201).send(result)
+
+        } catch (error: any) {
+            res.status(400).send(error.message);
+        }
+    };
+
 }

@@ -127,13 +127,22 @@ export class PostBusiness {
 
             const array = await friendshioDatabase.getAllFriends({ userId: id })
 
+            if (array[0] === undefined) {
+                throw new err.EmptyFeed()
+            }
+
+
             const createArrayForFeed = new CreatArrayForFeed
             const stringForQuery = createArrayForFeed.createArrayForFeed(array)
 
             const result = await this.postDatabase.postFeed({ id: id, stringForQuery: stringForQuery, limit: limitNumber })
 
-            return result
+            if (result[0] === undefined) {
+                throw new err.EmptyFeed()
+            } else {
 
+                return result
+            }
 
         } catch (error: any) {
             throw new CustomError(400, error.message);
