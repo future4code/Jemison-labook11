@@ -40,7 +40,7 @@ export class LikeBusiness {
                 )
                 await this.likeDatabase.insertLike(newLike)
 
-                return { message: 'Post Criado com sucesso', like: newLike }
+                return { message: 'Você acabou de dar like no Post', like: newLike }
             }
         } catch (error: any) {
             throw new CustomError(400, error.message);
@@ -67,7 +67,7 @@ export class LikeBusiness {
             } else {
                 await this.likeDatabase.deleteLike({ userId: id, postId: input.postId })
 
-                return 'Like deletado com sucesso!'
+                return 'Você acobou de remover seu like do Post '
             }
         } catch (error: any) {
             throw new CustomError(400, error.message);

@@ -24,7 +24,7 @@ export interface CreationPostReturnDTO {
 }
 
 export interface ReturnPostGetByDTO {
-   'Id do Post': string,
+   'ID do Post': string,
    'URL da imagem': string,
    'Descrição': string,
    'Tipo de postagem': string,

@@ -11,9 +11,9 @@ export class CreatArrayForFeed {
         }
 
         let friendsArrayToString = friendsArray.toString()
-        let FriendsArrayWithoutComma = friendsArrayToString.replaceAll(",", " ")
-        let FriendsArrayWithoutFinalStrings = FriendsArrayWithoutComma.slice(0, -3)
+        let FriendsStringWithoutComma = friendsArrayToString.replaceAll(",", " ")
+        let FriendsStringWithoutFinalStrings = FriendsStringWithoutComma.slice(0, -3)
 
-        return FriendsArrayWithoutFinalStrings
+        return FriendsStringWithoutFinalStrings
     }
 }

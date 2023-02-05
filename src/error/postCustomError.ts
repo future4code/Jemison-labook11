@@ -47,3 +47,9 @@ export class InvalidGetByType extends CustomError {
         super(422, 'O tipo do post precisa ser "event" ou "normal".')
     }
 }
+
+export class EmptyFeed extends CustomError {
+    constructor() {
+        super(409, 'Feed Vazio')
+    }
+}

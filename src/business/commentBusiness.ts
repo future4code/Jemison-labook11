@@ -1,3 +1,4 @@
+import { GetCommentReturnDTO } from './../model/DTO/commentDTO';
 import { CommentClass } from './../model/class/commentClass';
 import { CommentInput, CreationCommentReturnDTO } from '../model/DTO/commentDTO';
 import { PostDatabase } from './../data/postsDatabase';
@@ -51,5 +52,22 @@ export class CommentBusiness {
             throw new CustomError(400, error.message);
         }
     };
+
+    public getCommentsByUser = async (token: string): Promise<GetCommentReturnDTO[]> => {
+
+        try {
+
+            const authenticator = new Authenticator()
+            const { id } = authenticator.getTokenData(token)
+           
+               const result = await this.commentDatabase.getCommentsByUser({userId:id})
+
+                return result
+            
+        } catch (error: any) {
+            throw new CustomError(400, error.message);
+        }
+    };
+  
 
 }
