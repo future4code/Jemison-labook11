@@ -1,7 +1,7 @@
-export type AuthenticationData ={
+export type AuthenticationData = {
     id: string
 }
 
 export interface AuthenticationTokenDTO {
-token: string    
+    token: string
 }

@@ -7,7 +7,7 @@ export class LoginController {
   constructor(private loginBusiness: LoginBusiness) { }
 
   public login = async (req: Request, res: Response): Promise<void> => {
-    
+
     try {
 
       const { email, password } = req.body
@@ -24,5 +24,5 @@ export class LoginController {
     } catch (error: any) {
       res.status(400).send(error.message);
     }
-  };   
+  };
 }

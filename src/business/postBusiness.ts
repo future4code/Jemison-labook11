@@ -11,7 +11,6 @@ import { CustomError } from '../error/customError';
 import * as err from '../error/postCustomError';
 import { TypeEnum } from '../model/class/postClass';
 
-
 export class PostBusiness {
 
     constructor(private postDatabase: PostRepository) { }
@@ -32,10 +31,10 @@ export class PostBusiness {
             if (!input.description) {
                 throw new err.MissingDescription()
             }
-            if (input.type && input.type !== TypeEnum.EVENT) {
+            if (input.type && input.type !== TypeEnum.EVENT && input.type !== TypeEnum.NORMAL) {
                 throw new err.InvalidType()
             }
-            if (!input.type) {
+            if (!input.type || input.type == 'normal') {
                 typeChoosed = TypeEnum.NORMAL
 
             } else {
@@ -91,6 +90,7 @@ export class PostBusiness {
             const authenticator = new Authenticator()
             const { id } = authenticator.getTokenData(token)
 
+
             if (!input.type) {
                 throw new err.MissingType()
             }
@@ -117,8 +117,8 @@ export class PostBusiness {
             let limitNumber
 
             const test = /\d|,/g.test(limitN.toString())
-           
-            if (!limitN || Number(limitN) < 5 || !test ) {
+
+            if (!limitN || Number(limitN) < 5 || !test) {
                 limitNumber = 5
             } else {
                 limitNumber = Number(limitN)

@@ -4,9 +4,9 @@ export interface LikeInputDTO {
     postId: string
 }
 
-export interface GetLikeByInputDTO{
-userId:string,
-postId:string
+export interface GetLikeByInputDTO {
+    userId: string,
+    postId: string
 }
 
 export interface LikeCreateReturnDTO {
@@ -14,7 +14,7 @@ export interface LikeCreateReturnDTO {
     like: LikeClass
 }
 
-export interface GetLikeByReturnDTO{
-    "Usuário ID":string,
-    "Post ID":string
+export interface GetLikeByReturnDTO {
+    "Usuário ID": string,
+    "Post ID": string
 }

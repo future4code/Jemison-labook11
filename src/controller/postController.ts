@@ -1,4 +1,4 @@
-import { FeedLimitInputDTO, PostGetByIdInputDTO, PostGetByTypeInputDTO } from '../model/DTO/postDTOs';
+import { PostGetByIdInputDTO, PostGetByTypeInputDTO } from '../model/DTO/postDTOs';
 import { AuthenticationTokenDTO } from '../model/type/authenticationsTypes';
 import { PostBusiness } from "../business/postBusiness";
 import { Request, Response } from 'express';
@@ -54,7 +54,7 @@ export class PostController {
                 type
             }
 
-            const result = await this.postBusiness.getPostByType(type, token.token)
+            const result = await this.postBusiness.getPostByType(input, token.token)
             res.status(201).send(result)
 
         } catch (error: any) {
@@ -66,9 +66,9 @@ export class PostController {
         try {
 
             const token: AuthenticationTokenDTO = { token: req.headers.auth as string }
-            const limit  = req.body.limit as number 
-          
-            const result = await this.postBusiness.feed(limit,token.token )
+            const limit = req.body.limit as number
+
+            const result = await this.postBusiness.feed(limit, token.token)
             res.status(201).send(result)
 
         } catch (error: any) {
@@ -76,5 +76,5 @@ export class PostController {
         }
     };
 
-    
+
 }

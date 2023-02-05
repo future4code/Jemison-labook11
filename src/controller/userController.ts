@@ -1,4 +1,4 @@
-import { UserControllerInputDTO} from '../model/DTO/userDTOs';
+import { UserControllerInputDTO } from '../model/DTO/userDTOs';
 import { UserBusiness } from './../business/userBusiness';
 import { Request, Response } from 'express';
 
@@ -22,7 +22,7 @@ export class UserController {
     } catch (error: any) {
       res.status(400).send(error.message);
     }
-  };   
+  };
 }
 
 

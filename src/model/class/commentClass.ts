@@ -1,7 +1,7 @@
 
 export class CommentClass {
     constructor(
-        private id:string,
+        private id: string,
         private user_id_fk: string,
         private post_id_fk: string,
         private comment: string
@@ -28,10 +28,10 @@ export class CommentClass {
         this.post_id_fk = newPostId
     }
 
-    public getComment(){
+    public getComment() {
         return this.comment
     }
-    public setCommet(newComment:string){
+    public setCommet(newComment: string) {
         this.comment = newComment
     }
 
