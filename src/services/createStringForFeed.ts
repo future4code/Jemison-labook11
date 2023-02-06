@@ -1,8 +1,8 @@
 import { FriendsForFeedDTO } from "../model/DTO/friendshipDTO";
 
-export class CreatArrayForFeed {
+export class CreatStringForFeed {
 
-    public createArrayForFeed = (array: FriendsForFeedDTO[]): string => {
+    public createStringForFeed = (array: FriendsForFeedDTO[]): string => {
 
         let friendsArray = []
         for (let i = 0; i < array.length; i++) {
