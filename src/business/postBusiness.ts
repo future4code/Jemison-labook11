@@ -116,13 +116,14 @@ export class PostBusiness {
 
             let limitNumber
 
-            const test = /\d|,/g.test(limitN.toString())
-
-            if (!limitN || Number(limitN) < 5 || !test) {
+            if (!limitN || Number(limitN) < 5) {
+                limitNumber = 5
+            } else if (!/\d|,/g.test(limitN.toString())) {
                 limitNumber = 5
             } else {
                 limitNumber = Number(limitN)
             }
+
             const friendshioDatabase = new FriendshipDatabase()
 
             const array = await friendshioDatabase.getAllFriends({ userId: id })
@@ -143,12 +144,12 @@ export class PostBusiness {
 
                 return result
             }
+       
 
-        } catch (error: any) {
-            throw new CustomError(400, error.message);
-        }
+            } catch(error: any) {
+        throw new CustomError(400, error.message);
     }
-
 }
+    }
 
 

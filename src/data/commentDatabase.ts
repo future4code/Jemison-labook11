@@ -33,7 +33,8 @@ export class CommentDatabase extends BaseDatabase implements CommentRepository {
             INNER JOIN ${TABLE_USERS} u ON u.id = c.user_id_fk
             INNER JOIN ${TABLE_POSTS} p ON p.id = c.post_id_fk
             INNER JOIN ${TABLE_USERS} ap ON ap.id = p.author_id_fk
-            WHERE c.user_id_fk = "${input.userId}";
+            WHERE c.user_id_fk = "${input.userId}"
+            ORDER by c.commented_at;
         `)
         
         return result[0]
