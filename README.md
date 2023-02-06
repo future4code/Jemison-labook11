@@ -79,12 +79,6 @@ Ele não necessita de nenhum tipo de autorização e deve receber os dados nome,
 </br>
 
 :green_circle: Buscar os ultimos Posts dos amigos do usuário
->POR ALGUM MOTIVO ESTE ENDPOINT NÃO FUNCIONA NO DEPLOY, APENAS NO LOCALHOST.
-
->NO DEPLOY ELE APRESENTA O ERRO NA FUNÇÃO QUE TRANSFORMA O ARRAY DE AMIGOE EM UMA STRING
-
->EXATAMENTE NA PARTE QUE UTILIZA REPLACEALL(","," ") PARA REMOVER AS VÍRGULAS DA STRING.
-
 >Este endpoint recebe um token de autorização através do "header" e utiliza o ID retirado deste token para retornar os ultimos posts criados pelos amigos do usuário.
 por padrão, são exibidos os cinco ultimos posts, porém é possível passar através do "body" um limite maior, sendo que se este limite for menor que cinco ou não existir o endpoint irá manter o padrão de cinco posts.
 </br>
