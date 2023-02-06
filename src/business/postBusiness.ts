@@ -1,4 +1,4 @@
-import { CreatArrayForFeed } from './../services/CreateArrayForFeed';
+import { CreatStringForFeed } from '../services/createStringForFeed';
 import { FriendshipDatabase } from './../data/friendshipDatabase';
 import { InvalidPostId } from './../error/postCustomError';
 import { ReturnPostGetByDTO, PostGetByIdInputDTO, PostGetByTypeInputDTO, FeedLimitInputDTO } from '../model/DTO/postDTOs';
@@ -132,9 +132,8 @@ export class PostBusiness {
                 throw new err.EmptyFeed()
             }
 
-
-            const createArrayForFeed = new CreatArrayForFeed
-            const stringForQuery = createArrayForFeed.createArrayForFeed(array)
+            const createStringForFeed = new CreatStringForFeed
+            const stringForQuery = createStringForFeed.createStringForFeed(array)
 
             const result = await this.postDatabase.postFeed({ id: id, stringForQuery: stringForQuery, limit: limitNumber })
 
