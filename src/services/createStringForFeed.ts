@@ -7,10 +7,10 @@ export class CreatStringForFeed {
         let friendsArray = []
         for (let i = 0; i < array.length; i++) {
 
-            friendsArray.push(`author_id_fk = "${array[i].amigo}" OR`)
+            friendsArray.push(`author_id_fk = "${array[i].amigo}" OR `)
         }
         let friendsArrayToString = friendsArray.toString()
-        let FriendsStringWithoutComma = friendsArrayToString.replaceAll(",", " ")
+        let FriendsStringWithoutComma = friendsArrayToString.replace(/,/g, '')
         let FriendsStringWithoutFinalStrings = FriendsStringWithoutComma.slice(0, -3)
 
         return FriendsStringWithoutFinalStrings
