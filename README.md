@@ -39,7 +39,7 @@ Ele não necessita de nenhum tipo de autorização e deve receber os dados nome,
 </br>
 
 :green_circle: Buscar um Post através do tipo
->Este endpoint retorna um Post através do seu tipo("normal" ou "event"), para isso é necessário passar através do "header" o token de autenticação e o tipo através do body, como neste endpoint não existe um padrão como o de ciação, obrigatóriamente é necessário passar um dos dois tipos possíveis.
+>Este endpoint retorna um Post através do seu tipo("normal" ou "event"), para isso é necessário passar através do "header" o token de autenticação e o tipo através do body, como neste endpoint não existe um padrão de tipo, como o endpoint de criação, obrigatóriamente é necessário passar um dos dois tipos possíveis.
 
 >Este endpoint retorna todos os Posts do tipo escolhdo, ordenados pela data de criação deles.
 </br>
