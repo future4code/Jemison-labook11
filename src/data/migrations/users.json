@@ -1,0 +1,122 @@
+[
+  {
+    "id": "540f0508-c1c8-4bf4-9acd-8fb5108d4397",
+    "name": "Renato Alexandrini",
+    "email": "re.alexandrini@gmail.com",
+    "password": "$2a$12$NuV3W6eo4gJv/c.Kt2aeEeJv6Qh9MVnpSv49vTx9SGgZjBI8Y5rnO"
+  },
+  {
+    "id": "81199684-e6e0-48a3-9bac-ff29256904e2",
+    "name": "Flávia Siqueira",
+    "email": "flasiqueira@hotmail.com.br",
+    "password": "$2a$12$uTVK0LqPh1FLw07vj1oE7e9OsAHsLXelll34aTonbkTbV3JYhtvUC"
+  },
+  {
+    "id": "65448243-4e65-401a-8edc-58e793bc56a7",
+    "name": "Renan do Carmo",
+    "email": "carmorenan@gmail.com",
+    "password": "$2a$12$Ze.DI5Lzvw0mt3laAFSFWumQaWve9LyYm3/2zmMVsBGkjWIOhQFl2"
+  },
+  {
+    "id": "9527153b-2a73-462d-9c8c-63d9ac472db1",
+    "name": "Cíntia Coutinho",
+    "email": "cintiacou@outlook.com.br",
+    "password": "$2a$12$OpbzYuwcNM/Cv93B.SRWoO0xLVwqN199.zsLiwlP427otvAB.7V0S"
+  },
+  {
+    "id": "2ea99b71-92f4-4895-9bc9-74d1e5a85ed4",
+    "name": "Flávio Pereira",
+    "email": "flapereira@gmail.com",
+    "password": "$2a$12$Ui81HZgYP8xSYBjzLV/f0uy57T4BJjn4HaEg8ju5mikoe6IBuzu/O"
+  },
+  {
+    "id": "eb5b0414-1af6-4960-9838-d83b99160f1a",
+    "name": "Simone Rodrigues",
+    "email": "simonerodrigues@yahoo.com.br",
+    "password": "$2a$12$VNRyjjADeEtaZu6zDdYtVuQSAU1Aj3AEvDsh/qo2YA4f8DviRiCNS"
+  },
+  {
+    "id": "57251561-28ba-4604-b23b-0ef579fc23ca",
+    "name": "Geraldo Silva",
+    "email": "gesilva@yahoo.com.br",
+    "password": "$2a$12$JTBllnIkB3umtUSRASuVhePIXISp87I0ljAt/QSNz8sjjA0ccTp0i"
+  },
+  {
+    "id": "0227918a-300d-4df8-b97f-3f14552f6a4f",
+    "name": "Bruna Souza",
+    "email": "brunosouza@gmail.com",
+    "password": "$2a$12$17EOoS5qiZnuggnWH9jiV.ff.89FFfIQErYns1kJK3yNex.Da24ni"
+  },
+  {
+    "id": "a84c8417-d9cd-4623-af56-07dcac1af7a7",
+    "name": "Daniel Pires",
+    "email": "danpires@outlook.com.br",
+    "password": "$2a$12$P.GhC6.isggyksa0uCDwWOYD0Unf5NRRMmMEukScJOcAo.QJzJmCK"
+  },
+  {
+    "id": "afca5849-2a9a-4c68-8819-ee0da35ba8b1",
+    "name": "Patrícia Machado",
+    "email": "patymachado@hotmail.com.br",
+    "password": "$2a$12$EC1UM8ey9Uc/0s.sWiEsgekdk7Mdw6XH8WuWPhKH40fjoQgTSjLKu"
+  },
+  {
+    "id": "ad1edacf-a223-4af0-8f4b-5cb1e5239a68",
+    "name": "Jeferson dos Santos",
+    "email": "jefinhosantos@gmail.com",
+    "password": "$2a$12$6qBZsPbRWwQApiMPTSqeseca4k3N95Q76MOwVkL57EbfugJHLrpn2"
+  },
+  {
+    "id": "8edc708e-c2ee-4991-bd06-6cb83a10db7f",
+    "name": "Denise Aguiar",
+    "email": "deaguiar@outlook.com.br",
+    "password": "$2a$12$wNrUayLDIj27Xhf2ZjpXN.LU3G4e8OonwmIU5q4cYK0z2n8crmAQO"
+  },
+  {
+    "id": "a5674975-2f2b-4542-98e5-7cda16cb17d3",
+    "name": "Rodolfo Nogueira",
+    "email": "rodolfonog@gmail.com",
+    "password": "$2a$12$kd9L3.EJlescS9kWX0ll7uJLctzFj.9bQNmD39v1/zNhZTXptFaxu"
+  },
+  {
+    "id": "e1841436-7053-4598-a2ea-ebd76e33e5b8",
+    "name": "Gabriela Costa",
+    "email": "bielcosta@yahoo.com.br",
+    "password": "$2a$12$xWUDGWiA/Fd3oOmuvj1V3.mPgdKi/5HZ6jxUqK2857xb9r65PYjQ6"
+  },
+  {
+    "id": "95fc4480-c06a-4b1e-9563-a6037dae51e8",
+    "name": "Rafael Fagundes",
+    "email": "rafagundes@yahoo.com.br",
+    "password": "$2a$12$HrcFPLBROv10RZGzoNskLul6y9fQAi6kc4C9PmW.o8izcDpPpc3xy"
+  },
+  {
+    "id": "6f6059c3-4e8e-4e47-9199-4de79f77116b",
+    "name": "Maria Alves",
+    "email": "mariaalvs@outlook.com.br",
+    "password": "$2a$12$LMerxGkJjHYeJFJSYwt9J.IBAJNevChf7DqAA78QWPoV4g1O/oOTu"
+  },
+  {
+    "id": "6224f029-f9c9-4638-a406-a46f8f456c10",
+    "name": "Jorge Barbosa",
+    "email": "jorginhobarb@yahoo.com.br",
+    "password": "$2a$12$2zFZ3Cgus1mCRzC0fyg7LuUvS7o/5PTuq1hmbxmkr8m6ZKVdI3.SW"
+  },
+  {
+    "id": "2a85831b-0320-40f1-821d-0870f39714b4",
+    "name": "Rita Campos",
+    "email": "ritacampos@gmail.com",
+    "password": "$2a$12$yBC6EitlZi09yq0ptjT0WueyvZel/OBuB7bx9eq4oJk/zwFKtQYb."
+  },
+  {
+    "id": "6cd4d5d7-36c7-4956-93da-17de952c6b3d",
+    "name": "Júlio Soares ",
+    "email": "jusoares@gmail.com",
+    "password": "$2a$12$nCGej.DRNMOycC8xwqH/lugmIgrUJsX2I4nZrf/GkZSX5SqNTkS2K"
+  },
+  {
+    "id": "d61a9847-2b9a-4b2f-976c-f9b6b236bd95",
+    "name": "Marina Monteiro",
+    "email": "mmonteiro@gmail.com",
+    "password": "$2a$12$IcDQcpQYyL6/1oX9bCA.XeIRiV5mx3c9r5D.R3Tmwj.zvDK07yIf."
+  }
+]
